@@ -1,1 +1,0 @@
-Gostaria de também poder pesquisar por palavras que possam estar no campo "outras informações", além das pesquisas por nome e cpf. Dê-me o passo-a-passo para essa alteração.
