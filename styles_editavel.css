@@ -1,0 +1,681 @@
+/* Reset e estilos base */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #8B7355 0%, #A0956B 100%);
+    min-height: 100vh;
+    color: #333;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header da Polícia */
+.police-header {
+    background: linear-gradient(135deg, #5D4E37 0%, #6B5B47 50%, #7A6A57 100%);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border: 2px solid #C3B091;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+}
+
+.police-badge {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-pmsc {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    filter: drop-shadow(0 0 10px rgba(195, 176, 145, 0.5));
+}
+
+.badge-text h1 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+}
+
+.badge-text p {
+    font-size: 1rem;
+    opacity: 0.9;
+    letter-spacing: 1px;
+}
+
+.header-title {
+    text-align: right;
+}
+
+.header-title h2 {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+    color: #C3B091;
+}
+
+.header-title p {
+    font-size: 1.1rem;
+    opacity: 0.8;
+}
+
+/* Painel de Controles */
+.controls-panel {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e0e0e0;
+}
+
+.control-group {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+/* Botões */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #C3B091 0%, #A0956B 100%);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #A0956B 0%, #8B7355 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(195, 176, 145, 0.3);
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, #6c757d 0%, #5a6268 100%);
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: linear-gradient(135deg, #5a6268 0%, #495057 100%);
+    transform: translateY(-2px);
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+    color: white;
+}
+
+.btn-danger:hover {
+    background: linear-gradient(135deg, #c82333 0%, #bd2130 100%);
+    transform: translateY(-2px);
+}
+
+.btn-icon {
+    font-size: 16px;
+}
+
+/* Inputs e Selects */
+.filter-select, .search-input {
+    padding: 12px 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 14px;
+    background: white;
+    transition: border-color 0.3s ease;
+}
+
+.filter-select:focus, .search-input:focus {
+    outline: none;
+    border-color: #C3B091;
+    box-shadow: 0 0 0 3px rgba(195, 176, 145, 0.1);
+}
+
+.search-input {
+    width: 250px;
+}
+
+/* Grid do Organograma - Compacto */
+.organograma-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
+}
+
+/* Cards dos Indivíduos - Novo Layout */
+.individual-card {
+    background: #F0F0F0;
+    border-radius: 25px;
+    padding: 20px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    border: 3px solid #e0e0e0;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    min-height: 120px;
+}
+
+.individual-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    border-color: #C3B091;
+}
+
+.individual-card.status-ativo {
+    border-color: #28a745;
+}
+
+.individual-card.status-preso {
+    border-color: #dc3545;
+}
+
+.individual-card.status-tornozeleira {
+    border-color: #ffc107;
+}
+
+/* Foto circular maior */
+.photo-container {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid #C3B091;
+    box-shadow: 0 4px 15px rgba(195, 176, 145, 0.3);
+    flex-shrink: 0;
+}
+
+.photo-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Informações do card */
+.card-info {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.individual-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #2c3e50;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    width: fit-content;
+}
+
+.status-badge.ativo {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.status-badge.preso {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.status-badge.tornozeleira {
+    background: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeaa7;
+}
+
+.individual-age {
+    font-size: 0.9rem;
+    color: #6c757d;
+    font-weight: 500;
+}
+
+/* Botão de edição no card */
+.card-edit-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(195, 176, 145, 0.9);
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 12px;
+    color: white;
+}
+
+.card-edit-btn:hover {
+    background: #C3B091;
+    transform: scale(1.1);
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 700px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.details-modal-content {
+    max-width: 900px;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px;
+    border-bottom: 2px solid #e9ecef;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 15px 15px 0 0;
+}
+
+.modal-header h3 {
+    color: #2c3e50;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #6c757d;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.close-btn:hover {
+    color: #dc3545;
+    background: rgba(220, 53, 69, 0.1);
+}
+
+.modal-body {
+    padding: 25px;
+}
+
+.details-body {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+.details-photo-section {
+    flex-shrink: 0;
+}
+
+/* Foto retangular maior no pop-up */
+.details-photo {
+    width: 250px;
+    height: 300px;
+    border-radius: 15px;
+    object-fit: cover;
+    border: 4px solid #C3B091;
+    box-shadow: 0 8px 25px rgba(195, 176, 145, 0.3);
+}
+
+.details-info-section {
+    flex: 1;
+}
+
+.info-item {
+    margin-bottom: 20px;
+}
+
+.info-item strong {
+    display: block;
+    color: #2c3e50;
+    font-size: 1rem;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.info-item span, .info-item p {
+    color: #495057;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.ligacoes-list {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 15px;
+    border-left: 4px solid #C3B091;
+}
+
+.ligacao-item {
+    background: white;
+    padding: 10px 15px;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    border: 1px solid #e9ecef;
+    font-size: 0.9rem;
+}
+
+.ligacao-item:last-child {
+    margin-bottom: 0;
+}
+
+.modal-footer {
+    padding: 20px 25px;
+    border-top: 2px solid #e9ecef;
+    display: flex;
+    gap: 15px;
+    justify-content: flex-end;
+    background: #f8f9fa;
+    border-radius: 0 0 15px 15px;
+}
+
+/* Formulário */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #495057;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+    font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #C3B091;
+    box-shadow: 0 0 0 3px rgba(195, 176, 145, 0.1);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    .header-content {
+        flex-direction: column;
+        gap: 15px; /* Reduzir um pouco a distância */
+        text-align: center;
+    }
+
+    .police-badge {
+        flex-direction: row; /* Mantém logo e texto na mesma linha */
+        align-items: center;
+        justify-content: center; /* Centraliza logo e texto do badge */
+        gap: 10px; /* Reduz espaço entre logo e texto do badge */
+    }
+
+    .logo-pmsc {
+        width: 50px; /* Reduz um pouco o tamanho do logo */
+        height: 50px;
+    }
+
+    .badge-text h1 {
+        font-size: 1.5rem; /* Reduz o tamanho do título principal */
+    }
+
+    .badge-text p {
+        font-size: 0.9rem; /* Reduz o tamanho do subtítulo */
+    }
+    
+    .header-title {
+        text-align: center; /* Centraliza o título "Organograma de Investigação" */
+    }
+
+    .header-title h2 {
+        font-size: 1.3rem; /* Ajusta o tamanho do título Organograma */
+    }
+
+    .header-title p {
+        font-size: 1rem; /* Ajusta o tamanho do subtítulo Tráfico de Drogas */
+    }
+
+    /* Painel de Controles */
+    .controls-panel {
+        flex-direction: column;
+        gap: 15px; /* Ajusta espaço entre os grupos de controle */
+        padding: 15px;
+    }
+    
+    .control-group {
+        flex-wrap: wrap; /* Permite que os botões quebrem linha */
+        justify-content: center; /* Centraliza botões */
+        width: 100%; /* Ocupa largura total para melhor agrupamento */
+        gap: 10px; /* Espaçamento entre os botões */
+    }
+
+    /* Botões */
+    .btn {
+        padding: 10px 15px; /* Diminui um pouco o padding dos botões */
+        font-size: 13px; /* Diminui um pouco o texto dos botões */
+        width: calc(50% - 5px); /* Tenta colocar 2 botões por linha */
+        min-width: 140px; /* Garante um tamanho mínimo para os botões */
+    }
+
+    /* Input de busca e select */
+    .filter-select, .search-input {
+        padding: 10px 12px;
+        font-size: 13px;
+        width: 100%; /* Ocupa largura total para melhor usabilidade */
+    }
+
+    /* Grid do Organograma */
+    .organograma-grid {
+        grid-template-columns: 1fr; /* Apenas uma coluna no celular */
+        gap: 15px;
+        padding: 15px 0;
+    }
+    
+    /* Cards dos Indivíduos */
+    .individual-card {
+        flex-direction: row; /* Mantém foto e info na mesma linha */
+        align-items: center;
+        text-align: left; /* Alinha o texto à esquerda */
+        min-height: auto;
+        padding: 15px;
+        gap: 15px; /* Ajusta o espaçamento entre foto e texto */
+    }
+    
+    .photo-container {
+        width: 70px; /* Aumenta um pouco a foto do card */
+        height: 70px;
+        border-width: 3px; /* Ajusta borda da foto */
+    }
+
+    .individual-name {
+        font-size: 1.1rem; /* Ajusta o tamanho do nome no card */
+        margin-bottom: 4px; /* Reduz espaço abaixo do nome */
+    }
+
+    .status-badge {
+        padding: 3px 8px; /* Ajusta padding do badge */
+        font-size: 0.75rem; /* Ajusta tamanho da fonte do badge */
+    }
+
+    .individual-age {
+        font-size: 0.85rem; /* Ajusta tamanho da fonte da idade */
+    }
+
+    .card-edit-btn {
+        top: 8px; /* Ajusta posição do botão de editar no card */
+        right: 8px;
+        width: 28px;
+        height: 28px;
+        font-size: 11px;
+    }
+    
+    /* Modais */
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .details-body {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .details-photo {
+        width: 200px;
+        height: 240px;
+    }
+}
+
+/* Animações */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.individual-card {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Estados de edição */
+.editing {
+    background: #fff3cd !important;
+    border-color: #ffc107 !important;
+}
+
+.editable-field {
+    cursor: text;
+    padding: 2px 6px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.editable-field:hover {
+    background: rgba(195, 176, 145, 0.1);
+}
+
+/* Indicador de salvamento */
+.save-indicator {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    z-index: 1001;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+}
+
+.save-indicator.show {
+    transform: translateX(0);
+}
