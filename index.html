@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organograma Editável - Polícia Militar de Grão-Pará</title>
+    <link rel="stylesheet" href="styles_editavel.css">
+</head>
+<body>
+    <div class="container">
+        <header class="police-header">
+            <div class="header-content">
+                <div class="police-badge">
+                    <img src="images/logopmsc.png" alt="Logo PM-SC" class="logo-pmsc">
+                    <div class="badge-text">
+                        <h1>POLÍCIA MILITAR</h1>
+                        <p>Grão-Pará - SC</p>
+                    </div>
+                </div>
+                <div class="header-title">
+                    <h2>Organograma de Investigação</h2>
+                    <p>Tráfico de Drogas</p>
+                </div>
+            </div>
+        </header>
+        
+        <div class="controls-panel">
+            <div class="control-group">
+                <button id="addIndividual" class="btn btn-primary">
+                    <span class="btn-icon">➕</span>
+                    Adicionar Indivíduo
+                </button>
+                <button id="exportData" class="btn btn-secondary">
+                    <span class="btn-icon">💾</span>
+                    Exportar Dados
+                </button>
+                <button id="importData" class="btn btn-secondary">
+                    <span class="btn-icon">📁</span>
+                    Importar Dados
+                </button>
+            </div>
+            
+            <div class="control-group">
+                <select id="filterStatus" class="filter-select">
+                    <option value="todos">Todos os Status</option>
+                    <option value="ativo">Ativo</option>
+                    <option value="preso">Preso</option>
+                    <option value="tornozeleira">Tornozeleira</option>
+                    <option value="temporaria">Temporária</option> </select>
+                <input type="text" id="searchInput" class="search-input" placeholder="Buscar por nome ou CPF...">
+            </div>
+        </div>
+        
+        <div id="organograma-container" class="organograma-grid">
+            </div>
+        
+        <div id="edit-modal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Editar Informações</h3>
+                    <button id="close-edit-modal" class="close-btn">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form id="edit-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="edit-nome">Nome Completo:</label>
+                                <input type="text" id="edit-nome" name="nome" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="edit-cpf">CPF:</label>
+                                <input type="text" id="edit-cpf" name="cpf" placeholder="000.000.000-00">
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="edit-dataNascimento">Data de Nascimento:</label>
+                                <input type="date" id="edit-dataNascimento" name="dataNascimento">
+                            </div>
+                            <div class="form-group">
+                                <label for="edit-status">Status:</label>
+                                <select id="edit-status" name="status">
+                                    <option value="ativo">Ativo</option>
+                                    <option value="preso">Preso</option>
+                                    <option value="tornozeleira">Tornozeleira</option>
+                                    <option value="temporaria">Temporária</option> </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="edit-ligacoes">Vínculos (uma por linha, formato: Nome - Tipo):</label>
+                            <textarea id="edit-ligacoes" name="ligacoes" rows="4" placeholder="João Silva - Fornecedor&#10;Maria Santos - Comparsa"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="edit-outrasInformacoes">Outras Informações:</label>
+                            <textarea id="edit-outrasInformacoes" name="outrasInformacoes" rows="3"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="edit-foto">Foto (URL ou nome do arquivo):</label>
+                            <input type="text" id="edit-foto" name="foto" placeholder="images/nome_arquivo.jpg">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="save-changes" class="btn btn-primary">Salvar Alterações</button>
+                    <button type="button" id="delete-individual" class="btn btn-danger">Excluir Indivíduo</button>
+                    <button type="button" id="cancel-edit" class="btn btn-secondary">Cancelar</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="details-modal" class="modal hidden">
+            <div class="modal-content details-modal-content">
+                <div class="modal-header">
+                    <h3 id="details-nome">Nome do Indivíduo</h3>
+                    <button id="close-details-modal" class="close-btn">&times;</button>
+                </div>
+                <div class="modal-body details-body">
+                    <div class="details-photo-section">
+                        <img id="details-foto" src="" alt="Foto do indivíduo" class="details-photo">
+                    </div>
+                    <div class="details-info-section">
+                        <div class="info-item">
+                            <strong>CPF:</strong>
+                            <span id="details-cpf"></span>
+                        </div>
+                        <div class="info-item">
+                            <strong>Idade:</strong>
+                            <span id="details-idade"></span> anos
+                        </div>
+                        <div class="info-item">
+                            <strong>Status:</strong>
+                            <span id="details-status" class="status-badge"></span>
+                        </div>
+                        <div class="info-item">
+                            <strong>Vínculos:</strong>
+                            <div id="details-ligacoes" class="ligacoes-list"></div>
+                        </div>
+                        <div class="info-item">
+                            <strong>Outras Informações:</strong>
+                            <p id="details-outras-info"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="edit-from-details" class="btn btn-primary">Editar</button>
+                    <button type="button" id="close-details" class="btn btn-secondary">Fechar</button>
+                </div>
+            </div>
+        </div>
+        
+        <input type="file" id="file-input" accept=".json" style="display: none;">
+    </div>
+
+    <script src="data_editavel.js?v=20250725_1350"></script>
+    <script src="script_editavel.js?v=20250725_1350"></script>
+</body>
+</html>
